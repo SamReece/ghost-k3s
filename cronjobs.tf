@@ -19,7 +19,7 @@ resource "kubernetes_cron_job_v1" "ghost_mysql_backup" {
 
             container {
               name  = "mysql-backup"
-              image = "ubuntu:22.04" # We'll install mysql-client & rclone
+              image = "ubuntu:22.04"
 
               env_from {
                 secret_ref {
