@@ -17,8 +17,8 @@ variable "mysql_database" {
 }
 
 variable "mysql_host" {
-  type        = string
-  default     = "mysql-service"
+  type    = string
+  default = "ghost-mysql"
 }
 
 variable "contabo_access_key" {

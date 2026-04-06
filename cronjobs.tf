@@ -1,7 +1,7 @@
-resource "kubernetes_cron_job" "ghost_mysql_backup" {
+resource "kubernetes_cron_job_v1" "ghost_mysql_backup" {
   metadata {
     name      = "ghost-mysql-backup"
-    namespace = "default"
+    namespace = "ghost"
   }
 
   spec {
@@ -46,7 +46,7 @@ resource "kubernetes_cron_job" "ghost_mysql_backup" {
                 echo "Dumping database..." && \
                 mysqldump -h ${var.mysql_host} -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE | gzip > $BACKUP_FILE && \
                 echo "Uploading to Contabo..." && \
-                rclone copy $BACKUP_FILE contabo:${var.contabo_bucket}/
+                rclone copy --no-check-certificate $BACKUP_FILE contabo:${var.contabo_bucket}/
               EOF
               ]
             }
