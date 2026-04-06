@@ -45,3 +45,9 @@ variable "backup_schedule" {
   type    = string
   default = "0 2 * * *" # daily at 2 AM
 }
+
+variable "backup_retention_days" {
+  description = "Number of days to retain backups in object storage"
+  type        = number
+  default     = 30
+}
