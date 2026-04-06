@@ -17,8 +17,8 @@ variable "mysql_database" {
 }
 
 variable "mysql_host" {
-  type        = string
-  default     = "mysql-service"
+  type    = string
+  default = "ghost-mysql"
 }
 
 variable "contabo_access_key" {
@@ -44,4 +44,10 @@ variable "contabo_bucket" {
 variable "backup_schedule" {
   type    = string
   default = "0 2 * * *" # daily at 2 AM
+}
+
+variable "backup_retention_days" {
+  description = "Number of days to retain backups in object storage"
+  type        = number
+  default     = 30
 }

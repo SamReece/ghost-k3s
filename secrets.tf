@@ -16,7 +16,7 @@ resource "kubernetes_secret_v1" "mysql_backup" {
 resource "kubernetes_secret_v1" "rclone_config" {
   metadata {
     name      = "rclone-config"
-    namespace = "default"
+    namespace = "ghost"
   }
 
   data = {
@@ -29,6 +29,7 @@ access_key_id = ${var.contabo_access_key}
 secret_access_key = ${var.contabo_secret_key}
 endpoint = ${var.contabo_endpoint}
 acl = private
+no_check_certificate = true
 EOF
   }
 
